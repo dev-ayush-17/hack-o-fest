@@ -21,7 +21,7 @@
 export const MODEL_HEIGHT = 3.4; // world units, feet→crown. Bigger = taller suit.
 export const BASE_ROT_Y = 0; // radians. If it faces away, try Math.PI.
 /** If the model imports lying down, flip this. Most Sketchfab Z-up rigs need -90°X. */
-const STAND_UP_X = -Math.PI / 2;
+const STAND_UP_Y = -Math.PI / 2;
 // ─────────────────────────────────────────────────────────────
 
 import { useEffect, useMemo, useRef } from "react";
@@ -46,7 +46,7 @@ export function IronManModel({
 
     // 1) stand the model upright in its own pivot, then measure.
     const inner = new THREE.Group();
-    root.rotation.set(STAND_UP_X, 0, 0);
+    root.rotation.set(0, STAND_UP_Y, 0);
     inner.add(root);
 
     // bake the rotation into world space before measuring the box.
